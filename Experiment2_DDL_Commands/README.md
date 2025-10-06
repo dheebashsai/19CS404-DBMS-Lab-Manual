@@ -105,124 +105,303 @@ CREATE TABLE Table_Name (
 
 **Question 1**
 --
--- Paste Question 1 here
+Insert the following customers into the Customers table:
+
+CustomerID  Name         Address     City        ZipCode
+----------  -----------  ----------  ----------  ----------
+302         Laura Croft  456 Elm St  Seattle     98101
+303         Bruce Wayne  789 Oak St  Gotham      10001
+
+For example:
+
+Test	Result
+SELECT * FROM Customers;
+
+CustomerID  Name         Address     City        ZipCode
+----------  -----------  ----------  ----------  ----------
+302         Laura Croft  456 Elm St  Seattle     98101
+303         Bruce Wayne  789 Oak St  Gotham      10001
 
 ```sql
--- Paste your SQL code below for Question 1
+insert into Customers(CustomerID,Name,Address,City,ZipCode) values(302,'Laura Croft','456 Elm St','Seattle',98101),(303,'Bruce Wayne','789 Oak St','Gotham',10001);
 ```
 
 **Output:**
 
-![Output1](output.png)
+<img width="1219" height="266" alt="image" src="https://github.com/user-attachments/assets/89f28756-ad63-40a4-bd47-71ffd8e04524" />
+
 
 **Question 2**
 ---
--- Paste Question 2 here
+Write a SQL Query  to add attribute ISBN as varchar(30) and domain_dept as varchar(30) in the table 'books'
+
+For example:
+
+Test	Result
+pragma table_info('books');
+cid         name        type        notnull     dflt_value  pk
+----------  ----------  ----------  ----------  ----------  ----------
+0           book_id     INT         0                       1
+1           title       VARCHAR(15  0                       0
+2           author      VARCHAR(10  0                       0
+3           genre       VARCHAR(50  0                       0
+4           publicatio  INT         0                       0
+5           ISBN        varchar(30  0                       0
+6           domain_dep  varchar(30  0                       0
+
 
 ```sql
--- Paste your SQL code below for Question 2
+alter table books add ISBN varchar(30);
+alter table books add domain_dep varchar(30);
 ```
 
 **Output:**
 
-![Output2](output.png)
+<img width="1250" height="253" alt="image" src="https://github.com/user-attachments/assets/43ba0905-c06d-4f11-af58-008095ae8b24" />
+
 
 **Question 3**
 ---
--- Paste Question 3 here
+Create a new table named item with the following specifications and constraints:
+item_id as TEXT and as primary key.
+item_desc as TEXT.
+rate as INTEGER.
+icom_id as TEXT with a length of 4.
+icom_id is a foreign key referencing com_id in the company table.
+The foreign key should cascade updates and deletes.
+item_desc and rate should not accept NULL.
+For example:
+
+Test	Result
+INSERT INTO item VALUES("ITM5","Charlie Gold",700,"COM4");
+UPDATE company SET com_id='COM5' WHERE com_id='COM4';
+SELECT * FROM item;
+item_id     item_desc     rate        icom_id
+----------  ------------  ----------  ----------
+ITM5        Charlie Gold  700         COM5
+
 
 ```sql
--- Paste your SQL code below for Question 3
+create table item(
+    item_id text primary key,
+    item_desc text not null,
+    rate integer not null,
+    icom_id text(4),
+    foreign key(icom_id) references company(com_id) on update cascade on delete cascade
+    );
 ```
 
 **Output:**
 
-![Output3](output.png)
+<img width="1213" height="232" alt="image" src="https://github.com/user-attachments/assets/dc0657c9-c2d1-4a73-88b2-40bfb28c68b5" />
+
 
 **Question 4**
 ---
--- Paste Question 4 here
+Create a table named Department with the following constraints:
+DepartmentID as INTEGER should be the primary key.
+DepartmentName as TEXT should be unique and not NULL.
+Location as TEXT.
+For example:
+
+Test	Result
+INSERT INTO Department (DepartmentID, DepartmentName, Location) VALUES (1, 'Human Resources', 'New York');
+select * from Department;
+DepartmentID  DepartmentName   Location
+------------  ---------------  ----------
+1             Human Resources  New York
+
 
 ```sql
--- Paste your SQL code below for Question 4
+create table Department(
+    DepartmentID integer primary key,
+    DepartmentName text unique not null,
+    Location text
+    );
 ```
 
 **Output:**
 
-![Output4](output.png)
+<img width="1890" height="189" alt="image" src="https://github.com/user-attachments/assets/3d01412b-02f0-40eb-bcd4-a4773f859deb" />
+
 
 **Question 5**
 ---
--- Paste Question 5 here
+Write a SQL Query  to Rename attribute "name" to "first_name"  and add mobilenumber as number ,DOB as Date,State as varchar(30) in the table Companies. 
+
+For example:
+
+Test	Result
+pragma table_info('Companies');
+cid         name        type        notnull     dflt_value  pk
+----------  ----------  ----------  ----------  ----------  ----------
+0           id          int         0                       0
+1           first_name  varchar(50  0                       0
+2           address     text        0                       0
+3           email       varchar(50  0                       0
+4           phone       varchar(10  0                       0
+5           mobilenumb  number      0                       0
+6           DOB         Date        0                       0
+7           State       varchar(30  0                       0
+
 
 ```sql
--- Paste your SQL code below for Question 5
+alter table Companies rename column name to first_name;
+alter table Companies add mobilenumber number;
+alter table Companies add DOB Date;
+alter table Companies add State varchar(30);
 ```
 
 **Output:**
 
-![Output5](output.png)
+<img width="1357" height="286" alt="image" src="https://github.com/user-attachments/assets/7afdf64f-aab2-49fe-ab36-0a2356bb12ee" />
 
 **Question 6**
 ---
--- Paste Question 6 here
+Create a table named Departments with the following columns:
+
+DepartmentID as INTEGER
+DepartmentName as TEXT
+For example:
+
+Test	Result
+pragma table_info('Departments');
+cid    name             type        notnull     dflt_value  pk
+-----  ---------------  ----------  ----------  ----------  ----------
+0      DepartmentID     INTEGER     0                       0
+1      DepartmentName   TEXT        0                       0
 
 ```sql
--- Paste your SQL code below for Question 6
+create table Departments(
+    DepartmentID INTEGER,
+    DepartmentName TEXT
+    );
 ```
 
 **Output:**
 
-![Output6](output.png)
+<img width="1379" height="248" alt="image" src="https://github.com/user-attachments/assets/9c80caa3-ab22-451b-b38a-fb3efa820ca5" />
+
 
 **Question 7**
 ---
--- Paste Question 7 here
+Create a table named Products with the following constraints:
+
+ProductID should be the primary key.
+ProductName should be NOT NULL.
+Price is of real datatype and should be greater than 0.
+Stock is of integer datatype and should be greater than or equal to 0.
+For example:
+
+Test	Result
+INSERT INTO Products
+VALUES (1, NULL,0,5);
+Error: NOT NULL constraint failed: Products.ProductName
+
 
 ```sql
--- Paste your SQL code below for Question 7
+create table Products(
+    ProductID primary key,
+    ProductName not null,
+    Price real check(Price>0),
+    Stock integer check(Stock>=0)
+    );
 ```
 
 **Output:**
 
-![Output7](output.png)
+<img width="1091" height="187" alt="image" src="https://github.com/user-attachments/assets/21965331-60a1-4baf-9a95-dc15525eb2f5" />
+
 
 **Question 8**
 ---
--- Paste Question 8 here
+Create a table named ProjectAssignments with the following constraints:
+AssignmentID as INTEGER should be the primary key.
+EmployeeID as INTEGER should be a foreign key referencing Employees(EmployeeID).
+ProjectID as INTEGER should be a foreign key referencing Projects(ProjectID).
+AssignmentDate as DATE should be NOT NULL.
+For example:
+
+Test	Result
+INSERT INTO ProjectAssignments (AssignmentID, EmployeeID, ProjectID, AssignmentDate) VALUES (2, 99, 1, '2024-01-03');
+Error: FOREIGN KEY constraint failed
+
 
 ```sql
--- Paste your SQL code below for Question 8
+create table ProjectAssignments(
+    AssignmentID integer primary key,
+    EmployeeID integer,
+    ProjectID integer,
+    AssignmentDate date not null,
+    foreign key(EmployeeID) references Employees(EmployeeID),
+    foreign key(ProjectID) references Projects(ProjectID)
+    );
 ```
 
 **Output:**
 
-![Output8](output.png)
+<img width="1791" height="200" alt="image" src="https://github.com/user-attachments/assets/e386bc58-8b2f-42d3-98b5-4883881584ad" />
+
 
 **Question 9**
 ---
--- Paste Question 9 here
+Insert all employees from Former_employees into Employee
+
+Table attributes are EmployeeID, Name, Department, Salary
+
+For example:
+
+Test	Result
+select * from Employee;
+EmployeeID  Name        Department  Salary
+----------  ----------  ----------  ----------
+201         John Doe    HR          50000
+202         Jane Smith  Engineerin  75000
+203         Emily Davi  Marketing   60000
+
 
 ```sql
--- Paste your SQL code below for Question 9
+select EmployeeID,Name,Department,Salary From Former_employees;
 ```
 
 **Output:**
 
-![Output9](output.png)
+<img width="1002" height="203" alt="image" src="https://github.com/user-attachments/assets/ba051b5b-e9e1-43b7-9bf9-d5ff43e799f9" />
+
 
 **Question 10**
 ---
--- Paste Question 10 here
+Insert the below data into the Student_details table, allowing the Subject and MARKS columns to take their default values.
+
+RollNo      Name          Gender      
+----------  ------------  ----------  
+204         Samuel Black  M          
+
+Note: The Subject and MARKS columns will use their default values.
+ 
+For example:
+
+Test	Result
+SELECT RollNo, Name, Gender 
+FROM Student_details 
+WHERE RollNo = 204;
+
+
+RollNo      Name          Gender
+----------  ------------  ----------
+204         Samuel Black  M
 
 ```sql
--- Paste your SQL code below for Question 10
+insert into Student_details(RollNo,Name,Gender) values(204,'Samuel Black','M');
 ```
 
 **Output:**
 
-![Output10](output.png)
+<img width="979" height="241" alt="image" src="https://github.com/user-attachments/assets/451c8fe7-36c9-4332-9c0a-f64917114d66" />
 
+## Screenshot of Module 1 SEB Completion Grades
+
+<img width="1135" height="311" alt="image" src="https://github.com/user-attachments/assets/023d75e3-03aa-48a0-8157-f1ae41947803" />
 
 ## RESULT
 Thus, the SQL queries to implement different types of constraints and DDL commands have been executed successfully.
